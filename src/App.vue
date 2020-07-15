@@ -1,18 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="content">
+      <div id="params_container" class="content__parameters">
+        <Parameter type="health"></Parameter><!-- Как лучше идентифицировать тип параметра? Можно добавить новый объект parameterType?s  -->
+        <Parameter type="tiredness"></Parameter>
+        <Parameter type="hunger"></Parameter>
+        <Parameter type="drought"></Parameter>
+      </div>
+      <div id="actions_container" class="content__actions">
+        <ActionControl action_name="Пить" action_type="drink"></ActionControl>
+        <ActionControl action_name="Есть" action_type="eat"></ActionControl>
+        <ActionControl action_name="Работать" action_type="work"></ActionControl>
+        <ActionControl action_name="Заниматься спортом" action_type="sport"></ActionControl>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ActionControl from './components/ActionControl.vue'
+import Parameter from './components/Parameter.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  components: { ActionControl, Parameter }
 }
 </script>
 
@@ -24,5 +35,30 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.content__parameters {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #888;
+  width: 30%;
+}
+
+.content__actions {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #888;
+  width: 30%;
+}
+
+@media screen and (max-width: 360px) {
+  .content {
+    flex-direction: column;
+  }
 }
 </style>
