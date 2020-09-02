@@ -3,19 +3,45 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+var maxValue = 100
+
 export default new Vuex.Store({
   state: {
+    styles: {
+      primaryColor: '#33d398'
+    },
     health: 100,
     tiredness: 0,
     hunger: 0,
-    drought: 0
+    drought: 0,
+    drinkOptions: [
+      { type: 'water', name: 'Вода' },
+      { type: 'juice', name: 'Сок' },
+      { type: 'beer', name: 'Пиво' }
+    ],
+    eatOptions: [
+      { type: 'apple', name: 'Яблоко' },
+      { type: 'orange', name: 'Апельсин' },
+      { type: 'bread', name: 'Хлеб' },
+      { type: 'burger', name: 'Бургер' }
+    ],
+    computerOptions: [
+      { type: 'work', name: 'Работать' },
+      { type: 'play', name: 'Играть' }
+    ],
+    sportOptions: [
+      { type: 'gym', name: 'Тренажёрный зал' },
+      { type: 'yoga', name: 'Йога' },
+      { type: 'run', name: 'Бег' }
+    ],
+    actionsHistory: []
   },
   mutations: {
     addHealth (state, value) {
-      if ((state.health + value) <= 100) {
+      if ((state.health + value) <= maxValue) {
         state.health += value
       } else {
-        state.health = 100 // Лучше ли задать константу (maxHealth = 100). Где это лучше сделать?
+        state.health = maxValue
       }
     },
 
@@ -28,10 +54,10 @@ export default new Vuex.Store({
     },
 
     addTiredness (state, value) {
-      if ((state.tiredness + value) <= 100) {
+      if ((state.tiredness + value) <= maxValue) {
         state.tiredness += value
       } else {
-        state.tiredness = 100
+        state.tiredness = maxValue
       }
     },
 
@@ -44,10 +70,10 @@ export default new Vuex.Store({
     },
 
     addHunger (state, value) {
-      if ((state.hunger + value) <= 100) {
+      if ((state.hunger + value) <= maxValue) {
         state.hunger += value
       } else {
-        state.hunger = 100
+        state.hunger = maxValue
       }
     },
 
@@ -60,10 +86,10 @@ export default new Vuex.Store({
     },
 
     addDrought (state, value) {
-      if ((state.drought + value) <= 100) {
+      if ((state.drought + value) <= maxValue) {
         state.drought += value
       } else {
-        state.drought = 100
+        state.drought = maxValue
       }
     },
 
@@ -73,6 +99,10 @@ export default new Vuex.Store({
       } else {
         state.drought = 0
       }
+    },
+
+    addActionToHistory (state, action) {
+      state.actionsHistory.push(action)
     }
   },
   actions: {
