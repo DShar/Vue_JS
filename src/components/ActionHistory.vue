@@ -1,5 +1,4 @@
 <template>
-    <transition name="modal-history">
         <div class="history" :style="cssStyles">
             <div class="history__background">
                 <div class="history__wrapper">
@@ -23,7 +22,6 @@
                 </div>
             </div>
         </div>
-    </transition>
 </template>
 
 <script>
@@ -60,7 +58,6 @@ export default {
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
-            transition: opacity 0.3s ease;
         }
 
         &__wrapper {
@@ -71,12 +68,13 @@ export default {
         &__main {
             max-height: 400px;
             overflow-y: scroll;
+            margin-bottom: 10px;
         }
 
         &__container {
             background-color: #fff;
             margin: 0 auto;
-            transition: all 0.3s ease;
+            padding: 10px 0;
         }
 
         &__header>span {
