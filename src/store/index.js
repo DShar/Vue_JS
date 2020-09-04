@@ -10,6 +10,7 @@ export default new Vuex.Store({
     styles: {
       primaryColor: '#33d398'
     },
+    actionsCounter: 0,
     health: 100,
     tiredness: 0,
     hunger: 0,
@@ -36,7 +37,19 @@ export default new Vuex.Store({
     ],
     actionsHistory: []
   },
+  getters: {
+    getAllOptions: state => {
+      var array = state.drinkOptions.concat(state.eatOptions).concat(state.computerOptions).concat(state.sportOptions)
+      return array
+    },
+    getOptionByType: (state, getters) => type => {
+      return getters.getAllOptions.filter(option => option.type === type)
+    }
+  },
   mutations: {
+    addCount (state) {
+      state.actionsCounter++
+    },
     addHealth (state, value) {
       if ((state.health + value) <= maxValue) {
         state.health += value

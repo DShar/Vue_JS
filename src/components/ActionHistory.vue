@@ -29,7 +29,6 @@ export default {
   name: 'ActionHistory',
   computed: {
     actionsList: function () {
-      console.log(this.$store.state.actionsHistory)
       return this.$store.state.actionsHistory
     },
     cssStyles: function () {

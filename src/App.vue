@@ -26,6 +26,9 @@
           <ActionControl action_name="Заниматься спортом" action_type="sport"></ActionControl>
         </div>
       </div>
+      <div class="content__terminal">
+        <ActionsTerminal></ActionsTerminal>
+      </div>
     </div>
   </div>
 </template>
@@ -34,10 +37,11 @@
 import ActionControl from './components/ActionControl.vue'
 import Parameter from './components/Parameter.vue'
 import ActionHistory from './components/ActionHistory.vue'
+import ActionsTerminal from './components/ActionsTerminal.vue'
 
 export default {
   name: 'App',
-  components: { ActionControl, Parameter, ActionHistory },
+  components: { ActionControl, Parameter, ActionHistory, ActionsTerminal },
   data: function () {
     return {
       showModal: false
@@ -114,12 +118,14 @@ export default {
     border: 1px solid #888;
     width: 35%;
   }
+
+  &__terminal {
+    margin-top: 30px;
+  }
 }
 
 @media screen and (max-width: 479px) {
   .content {
-    align-items: center;
-
     &__main {
       flex-direction: column;
       align-items: center;
@@ -127,7 +133,7 @@ export default {
 
     &__modules {
       margin-bottom: 20px;
-      width: 90%;
+      width: 100%;
     }
   }
 }
